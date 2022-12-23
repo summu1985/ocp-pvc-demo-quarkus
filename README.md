@@ -40,7 +40,11 @@ To test it using docker, run it as follows :
 docker run --rm -p 8080:8080 --name pvcdemo --mount source=myvol,target=/tmp summu85/ocp-pvc-quarkus:1.0.0-SNAPSHOT
 ```
 where myvol is the mounted volume.
+   
+   
+Access the application at : http://localhost:8080/pvcdemo
 
+   
 For testing on openshift, Follow the below steps :
 
 1. First create a project.
@@ -63,6 +67,14 @@ For testing on openshift, Follow the below steps :
 In this demo, we are just creating a new PVC of 10 MB and attaching to pod.
 
 <img width="627" alt="Screenshot 2022-12-23 at 12 08 26 PM" src="https://user-images.githubusercontent.com/69989028/209285086-623a4804-0662-4f9c-8b8b-6f806f995209.png">
+   
+5. Get the URL of the deployment by going to routes option
+   
+<img width="829" alt="Screenshot 2022-12-23 at 12 17 40 PM" src="https://user-images.githubusercontent.com/69989028/209286332-7c192720-42f0-486a-be08-87aa843c9800.png">
+   
+Access the application at https://ocp-pvc-quarkus-ocp-pvc-quarkus-demo.apps.cluster-c8v8z.c8v8z.sandbox2929.opentlc.com/pvcdemo
+
+(Your URL hostname will differ)
 
 ## Verifying the demo
 
