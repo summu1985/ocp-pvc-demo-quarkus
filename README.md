@@ -41,3 +41,36 @@ docker run --rm -p 8080:8080 --name pvcdemo --mount source=myvol,target=/tmp sum
 ```
 where myvol is the mounted volume.
 
+For testing on openshift, Follow the below steps :
+
+1. First create a project.
+
+<img width="1190" alt="Screenshot 2022-12-23 at 11 57 54 AM" src="https://user-images.githubusercontent.com/69989028/209283807-7efb7e98-f0c3-4670-932c-bcf2ed185e6e.png">
+
+2. Switch to developer perspective. Select the "Add" menu and click on the "Container Images" option as shown below.
+
+<img width="1109" alt="Screenshot 2022-12-23 at 12 01 06 PM" src="https://user-images.githubusercontent.com/69989028/209284262-a57eedeb-1481-46c7-b7b3-b2406dba8a36.png">
+
+3. Fill out the form with below details : Image name from external registry = docker.io/summu85/ocp-pvc-quarkus:1.0.0-SNAPSHOT
+   Leave others to default and click Create button.
+   
+ <img width="1034" alt="Screenshot 2022-12-23 at 12 04 35 PM" src="https://user-images.githubusercontent.com/69989028/209284628-19b7c7b9-ab59-4bd1-acb9-947f98d8b741.png">
+
+4. Once the deployment is successful, add the persistent volume claim by selecting "Add Storage" by opening the deployment config as shown below.
+
+<img width="825" alt="Screenshot 2022-12-23 at 12 06 49 PM" src="https://user-images.githubusercontent.com/69989028/209284863-92ae6995-d5e8-45bf-912f-c114b1ad36e6.png">
+
+In this demo, we are just creating a new PVC of 10 MB and attaching to pod.
+
+<img width="627" alt="Screenshot 2022-12-23 at 12 08 26 PM" src="https://user-images.githubusercontent.com/69989028/209285086-623a4804-0662-4f9c-8b8b-6f806f995209.png">
+
+## Verifying the demo
+
+On Docker :
+Without the volume mount, every new invocation of the container, the web page always starts with peachpuff background and user selected color is not persisted.
+With the same volume mount attached to different container invocation, the user selected background color is persisted and the page comes up with the background color that was last saved (if any).
+
+On OpenShift :
+Without the PVC attached, if the container is scaled down and then scaled up, the web page always starts with peachpuff background and user selected color is not persisted.
+Once the PVC is attached, if the container is scaled down and then scaled up, the user selected background color is persisted and the page comes up with the background color that was last saved (if any).
+
