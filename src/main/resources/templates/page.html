@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hello {name ?: "World"}</title>
+    <style>
+        body {
+            background-color: {bgcolor};
+            color: #000;
+        }
+
+        h1 {
+            color: #4695EB;
+            font-size: 6vw;
+        }
+
+        h1 b {
+            color: #be9100;
+        }
+
+        p {
+            font-size: 2vw;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello <b>{name ?: "World"}</b></h1>
+
+    <p>Create your web page using Quarkus RESTEasy & Qute</p>
+
+
+    <form action="/pvcdemo/save" method="GET">
+        <div class="form-group"></div>
+        <label for="bgcolor">BG Color :</label>
+        <input name="bgcolor" id="bgcolor" />
+        <input type="submit" value="Save BG Color" />
+        </div>
+    </form>
+
+</body>
+
+</html>
