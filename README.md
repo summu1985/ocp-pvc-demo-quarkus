@@ -31,13 +31,15 @@ mvn clean package -Dquarkus.container-image.build=true
 
 ## Testing the demo
 
-The pre-built image has been pushed to docker hub : summu85/ocp-pvc-quarkus:1.0.0-SNAPSHOT, so you do not need to build the demo from scratch.
+The pre-built image has been pushed to docker hub : summu85/ocp-pvc-quarkus:1.0.0-SNAPSHOT, as well as to Quay registry : quay.io/summu85/pvc-quarkus:latest, so you do not need to build the demo from scratch.
 The demo expects a persistent volume mounted at /tmp, that must be provided for demo to work as expected.
 
 To test it using docker, run it as follows :
 
 ```shell script
 docker run --rm -p 8080:8080 --name pvcdemo --mount source=myvol,target=/tmp summu85/ocp-pvc-quarkus:1.0.0-SNAPSHOT
+or
+docker run --rm -p 8080:8080 --name pvcdemo --mount source=myvol,target=/tmp quay.io/summu85/pvc-quarkus:latest
 ```
 where myvol is the mounted volume.
    
